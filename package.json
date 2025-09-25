@@ -1,0 +1,15 @@
+{
+  "name": "nodeapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "start:prod": "NODE_ENV=production node app.js",
+    "test": "echo \"No tests yet\" && exit 0",
+    "lint": "npx eslint . || true",
+    "buildzip": "rm -f build.zip && zip -r build.zip . -x \"node_modules/*\" \".git/*\""
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
