@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     APP_NAME   = 'nodeapp'
-    NEXUS_URL  = 'http://54.243.121.113:8081'
+    NEXUS_URL  = 'http://172.31.25.163:8081'
     NEXUS_REPO = 'nodeapp'
     NEXUS_CREDS = 'nexus_creds'
     INVENTORY  = '/home/jenkins/ansible/nodeapp/hosts.ini'
