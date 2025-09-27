@@ -1,4 +1,6 @@
 node_modules/
 build.zip
 nodeapp-*.zip
+Jenkinsfile
+*.zip
 
