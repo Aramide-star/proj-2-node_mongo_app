@@ -6,7 +6,7 @@ pipeline {
     NEXUS_URL  = 'http://54.243.121.113:8081'
     NEXUS_REPO = 'nodeapp'
     NEXUS_CREDS = 'nexus_creds'
-    INVENTORY  = '/home/ec2-user/ansible/nodeapp/hosts.ini'
+    INVENTORY  = '/home/jenkins/ansible/nodeapp/hosts.ini'
     SMTP_TO    = 'memberA@example.com,memberB@example.com,memberC@example.com'
   }
 
