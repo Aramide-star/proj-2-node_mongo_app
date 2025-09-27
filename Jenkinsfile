@@ -2,12 +2,12 @@ pipeline {
   agent { label 'linux-agent' }
 
   environment {
-    APP_NAME   = 'nodeapp'
-    NEXUS_URL  = 'http://172.31.25.163:8081'
-    NEXUS_REPO = 'nodeapp'
+    APP_NAME    = 'nodeapp'
+    NEXUS_URL   = 'http://172.31.25.163:8081'
+    NEXUS_REPO  = 'nodeapp'
     NEXUS_CREDS = 'nexus_creds'
-    INVENTORY  = '/home/jenkins/ansible/nodeapp/hosts.ini'
-    SMTP_TO    = 'memberA@example.com,memberB@example.com,memberC@example.com'
+    INVENTORY   = '/home/jenkins/ansible/nodeapp/hosts.ini'
+    SMTP_TO     = 'memberA@example.com,memberB@example.com,memberC@example.com'
   }
 
   options { ansiColor('xterm') }
@@ -49,6 +49,16 @@ pipeline {
         archiveArtifacts artifacts: "${APP_NAME}-${BUILD_NUMBER}.zip", fingerprint: true
       }
     }
+
+    // >>> Added preflight stage to ensure the Nexus credential exists and is readable
+    stage('Preflight: Nexus creds exist') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: env.NEXUS_CREDS, usernameVariable: 'NU', passwordVariable: 'NP')]) {
+          sh 'echo "Nexus creds OK: $NU"'
+        }
+      }
+    }
+    // <<< End preflight
 
     stage('Upload to Nexus') {
       steps {
