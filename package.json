@@ -7,7 +7,7 @@
     "start:prod": "NODE_ENV=production node app.js",
     "test": "echo \"No tests yet\" && exit 0",
     "lint": "npx eslint . || true",
-    "buildzip": "rm -f build.zip && zip -r build.zip . -x \"node_modules/*\" \".git/*\""
+    "buildzip": "rm -f build.zip && zip -r build.zip . -x \"node_modules/*\" \".git/*\" \"nodeapp-*.zip\" \"build.zip\""
   },
   "dependencies": {
     "express": "^4.19.2"
